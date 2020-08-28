@@ -12,4 +12,10 @@ public class UserController {
         String token = dataBaseManager.FindUserByEmailPassword(email, password);
         return token;
     }
+
+    @RequestMapping(value = "/AddUser", method = RequestMethod.GET)
+    public @ResponseBody
+    void addUser(@RequestParam("email") String email, @RequestParam("password") String password){
+        dataBaseManager.AddUser(email, password);
+    }
 }

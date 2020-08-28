@@ -54,4 +54,25 @@ public class DataBaseManager {
         }
         return userFinded;
     }
+
+    public void AddUser(String email, String password){
+        try {
+            //Connection à la DB
+            Class.forName("com.mysql.jdbc.Driver");
+            String urlDB = "jdbc:mysql://localhost:3306/utilisateurs_leeroy";
+            String userDB = "root";
+            String passwordDB = "";
+
+            Connection conn = DriverManager.getConnection(urlDB, userDB, passwordDB);
+
+            Statement state = conn.createStatement();
+
+            //Requete SQL
+            String request = "INSERT INTO users (email, password, role) VALUES ('" + email + "', '" + password +"', 3)";
+            int result = state.executeUpdate(request);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
