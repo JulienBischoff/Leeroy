@@ -1,0 +1,20 @@
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\appsettings.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\API .NET.exe
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\API .NET.deps.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\API .NET.runtimeconfig.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\API .NET.runtimeconfig.dev.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\API .NET.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\bin\Debug\net5.0\API .NET.pdb
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.csprojAssemblyReference.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.AssemblyInfoInputs.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.AssemblyInfo.cs
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.csproj.CoreCompileInputs.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.RazorTargetAssemblyInfo.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\staticwebassets\API .NET.StaticWebAssets.Manifest.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\staticwebassets\API .NET.StaticWebAssets.xml
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.pdb
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.genruntimeconfig.cache
