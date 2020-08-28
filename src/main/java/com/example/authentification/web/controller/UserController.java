@@ -1,9 +1,6 @@
 package com.example.authentification.web.controller;
 import com.example.authentification.DataBaseManager;
-import com.example.authentification.User;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.*;
 
 @RestController
 public class UserController {
