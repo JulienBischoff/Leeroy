@@ -34,20 +34,20 @@ public class DataBaseManager {
             ResultSetMetaData resultMeta = result.getMetaData();
 
             //Lecture du premier resultat
-            result.first();
-
-            //Création du JWT
-            JwtBuilder builder = Jwts.builder()
-                    .setIssuedAt(new Date(System.currentTimeMillis())) //Date d'emission
-                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Date d'expiration (10 heures après)
-                    .setSubject(result.getString("email"))
-                    .claim("password", result.getString("password"))
-                    .claim("nom", result.getString("nom"))
-                    .claim("role", result.getString("role"))
-                    .signWith(SignatureAlgorithm.HS256, SECRET_KEY); //Signature
-            result.close();
-            state.close();
-            userFinded = builder.compact();
+            if(result.next() == true){
+                //Création du JWT
+                JwtBuilder builder = Jwts.builder()
+                        .setIssuedAt(new Date(System.currentTimeMillis())) //Date d'emission
+                        .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Date d'expiration (10 heures après)
+                        .setSubject(result.getString("email"))
+                        .claim("password", result.getString("password"))
+                        .claim("nom", result.getString("nom"))
+                        .claim("role", result.getString("role"))
+                        .signWith(SignatureAlgorithm.HS256, SECRET_KEY); //Signature
+                result.close();
+                state.close();
+                userFinded = builder.compact();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
