@@ -39,9 +39,8 @@ public class DataBaseManager {
                 JwtBuilder builder = Jwts.builder()
                         .setIssuedAt(new Date(System.currentTimeMillis())) //Date d'emission
                         .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Date d'expiration (10 heures après)
-                        .setSubject(result.getString("email"))
-                        .claim("password", result.getString("password"))
-                        .claim("nom", result.getString("nom"))
+                        .setSubject("Authentification")
+                        .claim("email", result.getString("email"))
                         .claim("role", result.getString("role"))
                         .signWith(SignatureAlgorithm.HS256, SECRET_KEY); //Signature
                 result.close();
