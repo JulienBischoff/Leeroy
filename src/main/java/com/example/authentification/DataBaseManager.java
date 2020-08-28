@@ -35,7 +35,7 @@ public class DataBaseManager {
     }
 
     public String FindUserByEmailPassword(String email, String password){
-        String userFinded = null;
+        String userFound = null;
         Statement state = ConnectionDB();
         //Requete SQL
         try {
@@ -55,16 +55,16 @@ public class DataBaseManager {
                         .signWith(SignatureAlgorithm.HS256, SECRET_KEY); //Signature
                 result.close();
                 state.close();
-                userFinded = builder.compact();
+                userFound = builder.compact();
             }
         } catch (Exception e){
             e.printStackTrace();
         }
-        return userFinded;
+        return userFound;
     }
 
     public String AddUser(String email, String password){
-        String erreur = null;
+        String error = null;
         try {
 
             Statement state = ConnectionDB();
@@ -77,11 +77,11 @@ public class DataBaseManager {
                 request = "INSERT INTO users (email, password, role) VALUES ('" + email + "', '" + password +"', 3)";
                 int linesUpdated = state.executeUpdate(request);
             } else {
-                erreur = "Adresse mail déjà utilisée";
+                error = "Adresse mail déjà utilisée";
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return erreur;
+        return error;
     }
 }
