@@ -11,8 +11,8 @@ public class UserController {
 
     @RequestMapping(value = "/Authentification", method = RequestMethod.GET)
     public @ResponseBody
-    User getUser(@RequestParam("email") String email, @RequestParam("password") String password){
-        User user = dataBaseManager.FindUserByEmailPassword(email, password);
-        return user;
+    String authentification(@RequestParam("email") String email, @RequestParam("password") String password){
+        String token = dataBaseManager.FindUserByEmailPassword(email, password);
+        return token;
     }
 }
