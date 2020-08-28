@@ -15,8 +15,8 @@ public class DataBaseManager {
 
     };
 
-    public String FindUserByEmailPassword(String email, String password){
-        String userFinded = null;
+    public Statement ConnectionDB(){
+        Statement state = null;
         try {
             //Connection à la DB
             Class.forName("com.mysql.jdbc.Driver");
@@ -26,9 +26,19 @@ public class DataBaseManager {
 
             Connection conn = DriverManager.getConnection(urlDB, userDB, passwordDB);
 
-            Statement state = conn.createStatement();
+            state = conn.createStatement();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-            //Requete SQL
+        return state;
+    }
+
+    public String FindUserByEmailPassword(String email, String password){
+        String userFinded = null;
+        Statement state = ConnectionDB();
+        //Requete SQL
+        try {
             String request = "SELECT * FROM users WHERE email ='"+ email + "' AND password='"+password+"'";
             ResultSet result = state.executeQuery(request);
             ResultSetMetaData resultMeta = result.getMetaData();
@@ -47,8 +57,7 @@ public class DataBaseManager {
                 state.close();
                 userFinded = builder.compact();
             }
-
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
         return userFinded;
@@ -57,15 +66,8 @@ public class DataBaseManager {
     public String AddUser(String email, String password){
         String erreur = null;
         try {
-            //Connection à la DB
-            Class.forName("com.mysql.jdbc.Driver");
-            String urlDB = "jdbc:mysql://localhost:3306/utilisateurs_leeroy";
-            String userDB = "root";
-            String passwordDB = "";
 
-            Connection conn = DriverManager.getConnection(urlDB, userDB, passwordDB);
-
-            Statement state = conn.createStatement();
+            Statement state = ConnectionDB();
 
             //Verification qu'aucun compte ne possède cet email
             String request = "SELECT * FROM users WHERE email ='"+ email +"'";
@@ -77,7 +79,6 @@ public class DataBaseManager {
             } else {
                 erreur = "Adresse mail déjà utilisée";
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
