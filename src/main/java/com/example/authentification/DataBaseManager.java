@@ -55,7 +55,8 @@ public class DataBaseManager {
         return userFinded;
     }
 
-    public void AddUser(String email, String password){
+    public String AddUser(String email, String password){
+        String erreur = null;
         try {
             //Connection à la DB
             Class.forName("com.mysql.jdbc.Driver");
@@ -67,12 +68,20 @@ public class DataBaseManager {
 
             Statement state = conn.createStatement();
 
-            //Requete SQL
-            String request = "INSERT INTO users (email, password, role) VALUES ('" + email + "', '" + password +"', 3)";
-            int result = state.executeUpdate(request);
+            //Verification qu'aucun compte ne possède cet email
+            String request = "SELECT * FROM users WHERE email ='"+ email +"'";
+            ResultSet result = state.executeQuery(request);
+            if(result.next() == false){
+                //Ajout du nouvel utilisateur en base de données
+                request = "INSERT INTO users (email, password, role) VALUES ('" + email + "', '" + password +"', 3)";
+                int linesUpdated = state.executeUpdate(request);
+            } else {
+                erreur = "Adresse mail déjà utilisée";
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return erreur;
     }
 }

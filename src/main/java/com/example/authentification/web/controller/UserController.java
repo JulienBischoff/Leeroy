@@ -15,7 +15,7 @@ public class UserController {
 
     @RequestMapping(value = "/AddUser", method = RequestMethod.GET)
     public @ResponseBody
-    void addUser(@RequestParam("email") String email, @RequestParam("password") String password){
-        dataBaseManager.AddUser(email, password);
+    String addUser(@RequestParam("email") String email, @RequestParam("password") String password){
+        return dataBaseManager.AddUser(email, password);
     }
 }
