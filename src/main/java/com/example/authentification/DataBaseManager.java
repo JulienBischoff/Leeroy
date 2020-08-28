@@ -41,7 +41,6 @@ public class DataBaseManager {
         try {
             String request = "SELECT * FROM users WHERE email ='"+ email + "' AND password='"+password+"'";
             ResultSet result = state.executeQuery(request);
-            ResultSetMetaData resultMeta = result.getMetaData();
 
             //Lecture du premier resultat
             if(result.next() == true){
