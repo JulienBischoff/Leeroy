@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET\\API .NET.csproj": {}
+    "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET\\API .NET.csproj": {
+    "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET\\API .NET.csproj",
+        "projectUniqueName": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET.csproj",
         "projectName": "API .NET",
-        "projectPath": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET\\API .NET.csproj",
+        "projectPath": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET.csproj",
         "packagesPath": "C:\\Users\\JULIEN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET\\obj\\",
+        "outputPath": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
