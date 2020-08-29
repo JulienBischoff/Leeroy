@@ -17,14 +17,14 @@ namespace API_.NET.Controllers
         }
 
         [HttpGet]
-        [Route("fraisList")]
+        [Route("list")]
         public List<Frais> FraisList()
         {
             return dataBaseManagerFrais.GetAllFrais();
         }
 
         [HttpGet]
-        [Route("fraisList/{employe_id}")]
+        [Route("list/{employe_id}")]
         public List<Frais> FraisEmployeList(int employe_id)
         {
             return dataBaseManagerFrais.GetEmployeFrais(employe_id);

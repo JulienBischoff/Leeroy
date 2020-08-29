@@ -17,8 +17,8 @@ namespace API_.NET.Controllers
         }
 
         [HttpPost]
-        [Route("noteFraisList")]
-        public string NoteFraisList([FromBody]NoteFrais noteFrais)
+        [Route("create")]
+        public string create([FromBody]NoteFrais noteFrais)
         {
             return dataBaseManagerNoteFrais.AddNoteFrais(noteFrais);
         }
