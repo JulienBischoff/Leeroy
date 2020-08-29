@@ -94,7 +94,47 @@ namespace API_.NET.Modele
             }
             return fraisList;
         }
+        public List<Frais> GetEmployeFraisPerMonth(int employe_id, int mois)
+        {
+            List<Frais> fraisList = new List<Frais>();
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                //TODO gérer les années
+                cmd.CommandText = $"SELECT * FROM Frais WHERE employe_id={employe_id} AND date >='{new DateTime(2020, mois, 1):u}' AND date<'{new DateTime(2020, mois, 1).AddMonths(1):u}'";
 
+                // Exécution de la commande SQL
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            // Récupérez l'indexe (index) de colonne Emp_ID dans l'instruction de requête SQL.
+                            Frais frais = new Frais(reader.GetInt32("id"),
+                                                    reader.GetInt32("employe_id"),
+                                                    reader.GetString("intitule"),
+                                                    reader.GetFloat("montant"),
+                                                    reader.GetString("devise"),
+                                                    reader.GetDateTime("date"),
+                                                    reader.GetInt32("note_frais_id"),
+                                                    reader.GetString("statut"),
+                                                    reader.GetString("motif"));
+                            fraisList.Add(frais);
+                        }
+                    }
+                }
+
+                // Fermeture de la connexion
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+            }
+            return fraisList;
+        }
         public string AddFrais(Frais frais)
         {
             try

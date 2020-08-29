@@ -30,6 +30,13 @@ namespace API_.NET.Controllers
             return dataBaseManagerFrais.GetEmployeFrais(employe_id);
         }
         
+        [HttpGet]
+        [Route("list/{employe_id}/{mois}")]
+        public List<Frais> FraisEmployePerMonthList(int employe_id, int mois)
+        {
+            return dataBaseManagerFrais.GetEmployeFraisPerMonth(employe_id, mois);
+        }
+        
         [HttpPost]
         [Route("create")]
         public string AddFrais([FromBody]Frais frais)
