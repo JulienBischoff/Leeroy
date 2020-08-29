@@ -10,17 +10,17 @@ namespace API_.NET.Controllers
     [Route("api/noteFrais")]
     public class NoteFraisController : ControllerBase
     {
-        DataBaseManager dataBaseManager;
+        DataBaseManagerNoteFrais dataBaseManagerNoteFrais;
         public NoteFraisController()
         {
-            dataBaseManager = new DataBaseManager();
+            dataBaseManagerNoteFrais = new DataBaseManagerNoteFrais();
         }
 
         [HttpPost]
         [Route("noteFraisList")]
         public string NoteFraisList([FromBody]NoteFrais noteFrais)
         {
-            return dataBaseManager.AddNoteFrais(noteFrais);
+            return dataBaseManagerNoteFrais.AddNoteFrais(noteFrais);
         }
     }
 }

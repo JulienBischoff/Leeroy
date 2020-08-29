@@ -10,24 +10,24 @@ namespace API_.NET.Controllers
     [Route("api/frais")]
     public class FraisController : ControllerBase
     {
-        DataBaseManager dataBaseManager;
+        DataBaseManagerFrais dataBaseManagerFrais;
         public FraisController()
         {
-            dataBaseManager = new DataBaseManager();
+            dataBaseManagerFrais = new DataBaseManagerFrais();
         }
 
         [HttpGet]
         [Route("fraisList")]
         public List<Frais> FraisList()
         {
-            return dataBaseManager.GetAllFrais();
+            return dataBaseManagerFrais.GetAllFrais();
         }
 
         [HttpGet]
         [Route("fraisList/{employe_id}")]
         public List<Frais> FraisEmployeList(int employe_id)
         {
-            return dataBaseManager.GetEmployeFrais(employe_id);
+            return dataBaseManagerFrais.GetEmployeFrais(employe_id);
         }
     }
 }
