@@ -13,6 +13,42 @@ namespace API_.NET.Modele
         {
 
         }
+        public List<NoteFrais> GetAllNoteFrais()
+        {
+            List<NoteFrais> noteFraisList = new List<NoteFrais>();
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = "SELECT * FROM note_frais";
+
+                // Exécution de la commande SQL
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            // Récupérez l'indexe (index) de colonne Emp_ID dans l'instruction de requête SQL.
+                            NoteFrais noteFrais = new NoteFrais(reader.GetFloat("montant_total"),
+                                                    reader.GetString("statut"),
+                                                    reader.GetInt32("employe_id"),
+                                                    reader.GetInt32("mois"),
+                                                    reader.GetInt32("id"));
+                            noteFraisList.Add(noteFrais);
+                        }
+                    }
+                }
+
+                // Fermeture de la connexion
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+            }
+            return noteFraisList;
+        }
 
         public string AddNoteFrais(NoteFrais noteFrais)
         {

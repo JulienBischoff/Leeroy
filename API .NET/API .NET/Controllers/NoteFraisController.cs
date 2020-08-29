@@ -16,6 +16,13 @@ namespace API_.NET.Controllers
             dataBaseManagerNoteFrais = new DataBaseManagerNoteFrais();
         }
 
+        [HttpGet]
+        [Route("list")]
+        public List<NoteFrais> NoteFraisList()
+        {
+            return dataBaseManagerNoteFrais.GetAllNoteFrais();
+        }
+
         [HttpPost]
         [Route("create")]
         public string create([FromBody]NoteFrais noteFrais)
