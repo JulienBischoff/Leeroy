@@ -112,5 +112,23 @@ namespace API_.NET.Modele
                 return e.Message;
             }
         }
+
+        public string UpdateFrais(Frais frais)
+        {
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = $"UPDATE frais SET employe_id = {frais.employe_id}, intitule = '{frais.intitule}', montant = {frais.montant.ToString(CultureInfo.InvariantCulture)}, devise = '{frais.devise}', date = '{frais.date:yyyy-MM-dd HH:mm:ss}', statut = '{frais.statut}', motif = '{frais.motif}', note_frais_id = {frais.note_frais_id} WHERE id = {frais.id}";
+                cmd.ExecuteNonQuery();
+                this.connection.Close();
+                return "ok";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+                return e.Message;
+            }
+        }
     }
 }
