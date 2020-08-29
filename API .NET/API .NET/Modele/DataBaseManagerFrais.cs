@@ -36,6 +36,7 @@ namespace API_.NET.Modele
                                                     reader.GetFloat("montant"),
                                                     reader.GetString("devise"),
                                                     reader.GetDateTime("date"),
+                                                    reader.GetInt32("note_frais_id"),
                                                     reader.GetString("statut"),
                                                     reader.GetString("motif"));
                             fraisList.Add(frais);
@@ -75,6 +76,7 @@ namespace API_.NET.Modele
                                                     reader.GetFloat("montant"),
                                                     reader.GetString("devise"),
                                                     reader.GetDateTime("date"),
+                                                    reader.GetInt32("note_frais_id"),
                                                     reader.GetString("statut"),
                                                     reader.GetString("motif"));
                             fraisList.Add(frais);

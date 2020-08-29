@@ -20,7 +20,7 @@ namespace API_.NET.Modele
         public Frais()
         {
         }
-        public Frais(int id, int employe_id, string intitule, float montant, string devise, DateTime date, int note_frais_id, string statut = null, string motif = null)
+        public Frais(int id, int employe_id, string intitule, float montant, string devise, DateTime date, int note_frais_id = 0, string statut = null, string motif = null)
         {
             this.id = id;
             this.employe_id = employe_id;
