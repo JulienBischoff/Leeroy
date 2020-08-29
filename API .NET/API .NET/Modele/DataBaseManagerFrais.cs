@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -92,6 +93,24 @@ namespace API_.NET.Modele
                 Console.WriteLine($"Generic Exception Handler: {e}");
             }
             return fraisList;
+        }
+
+        public string AddFrais(Frais frais)
+        {
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = $"INSERT INTO frais (employe_id, intitule, montant, devise, date, note_frais_id) VALUES ({frais.employe_id}, '{frais.intitule}', {frais.montant.ToString(CultureInfo.InvariantCulture)}, '{frais.devise}', '{frais.date:yyyy-MM-dd HH:mm:ss}' , 1)";
+                cmd.ExecuteNonQuery();
+                this.connection.Close();
+                return "ok";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+                return e.Message;
+            }
         }
     }
 }

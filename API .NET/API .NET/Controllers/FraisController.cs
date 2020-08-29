@@ -29,5 +29,14 @@ namespace API_.NET.Controllers
         {
             return dataBaseManagerFrais.GetEmployeFrais(employe_id);
         }
+        
+        [HttpPost]
+        [Route("create")]
+        public string AddFrais([FromBody]Frais frais)
+        {
+            DataBaseManagerNoteFrais dataBaseManagerNoteFrais = new DataBaseManagerNoteFrais();
+            frais.note_frais_id = dataBaseManagerNoteFrais.SearchOrCreateNoteFrais(frais.employe_id, frais.date.Month);
+            return dataBaseManagerFrais.AddFrais(frais);
+        }
     }
 }
