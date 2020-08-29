@@ -44,7 +44,8 @@ namespace API_.NET.Modele
                                                     reader.GetFloat("montant"),
                                                     reader.GetString("devise"),
                                                     reader.GetDateTime("date"),
-                                                    reader.GetString("statut"));
+                                                    reader.GetString("statut"),
+                                                    reader.GetString("motif"));
                             fraisList.Add(frais);
                         }
                     }
@@ -82,7 +83,8 @@ namespace API_.NET.Modele
                                                     reader.GetFloat("montant"),
                                                     reader.GetString("devise"),
                                                     reader.GetDateTime("date"),
-                                                    reader.GetString("statut"));
+                                                    reader.GetString("statut"),
+                                                    reader.GetString("motif"));
                             fraisList.Add(frais);
                         }
                     }

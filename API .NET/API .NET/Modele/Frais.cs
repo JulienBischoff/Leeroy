@@ -14,11 +14,12 @@ namespace API_.NET.Modele
         public string devise { get; set; }
         public DateTime date { get; set; }
         public string statut { get; set; }
+        public string motif { get; set; }
 
         public Frais()
         {
         }
-        public Frais(int id, int employe_id, string intitule, float montant, string devise, DateTime date, string statut)
+        public Frais(int id, int employe_id, string intitule, float montant, string devise, DateTime date, string statut, string motif)
         {
             this.id = id;
             this.employe_id = employe_id;
@@ -27,10 +28,11 @@ namespace API_.NET.Modele
             this.devise = devise;
             this.date = date;
             this.statut = statut;
+            this.motif = motif;
         }
         public override string ToString()
         {
-            return $"{id} {employe_id} {intitule} {montant} {devise} {date} {statut}";
+            return $"{id} {employe_id} {intitule} {montant} {devise} {date} {statut} {motif}";
         }
     }
 }
