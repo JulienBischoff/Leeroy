@@ -18,3 +18,38 @@ C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\sta
 C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.dll
 C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.pdb
 C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\API .NET\obj\Debug\net5.0\API .NET.genruntimeconfig.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\appsettings.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\API .NET.exe
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\API .NET.deps.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\API .NET.runtimeconfig.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\API .NET.runtimeconfig.dev.json
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\API .NET.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\API .NET.pdb
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\MySql.Data.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Google.Protobuf.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Zstandard.Net.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\K4os.Compression.LZ4.Streams.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Ubiety.Dns.Core.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Renci.SshNet.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\K4os.Compression.LZ4.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\K4os.Hash.xxHash.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.csprojAssemblyReference.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.AssemblyInfoInputs.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.AssemblyInfo.cs
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.csproj.CoreCompileInputs.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.RazorTargetAssemblyInfo.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.csproj.CopyComplete
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\staticwebassets\API .NET.StaticWebAssets.Manifest.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\staticwebassets\API .NET.StaticWebAssets.xml
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.pdb
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\obj\Debug\net5.0\API .NET.genruntimeconfig.cache
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\SshNet.Security.Cryptography.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
