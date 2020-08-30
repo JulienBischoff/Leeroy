@@ -141,7 +141,7 @@ namespace API_.NET.Modele
             {
                 this.connection.Open();
                 MySqlCommand cmd = this.connection.CreateCommand();
-                cmd.CommandText = $"INSERT INTO frais (employe_id, intitule, montant, devise, date, note_frais_id) VALUES ({frais.employe_id}, '{frais.intitule}', {frais.montant.ToString(CultureInfo.InvariantCulture)}, '{frais.devise}', '{frais.date:yyyy-MM-dd HH:mm:ss}' , 1)";
+                cmd.CommandText = $"INSERT INTO frais (employe_id, intitule, montant, devise, date, note_frais_id) VALUES ({frais.employe_id}, '{frais.intitule}', {frais.montant.ToString(CultureInfo.InvariantCulture)}, '{frais.devise}', '{frais.date:yyyy-MM-dd HH:mm:ss}' , {frais.note_frais_id})";
                 cmd.ExecuteNonQuery();
                 this.connection.Close();
                 return "ok";
