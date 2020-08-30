@@ -33,7 +33,7 @@ namespace API_.NET.Modele
                             NoteFrais noteFrais = new NoteFrais(reader.GetFloat("montant_total"),
                                                     reader.GetString("statut"),
                                                     reader.GetInt32("employe_id"),
-                                                    reader.GetInt32("mois"),
+                                                    reader.GetDateTime("date"),
                                                     reader.GetInt32("id"));
                             noteFraisList.Add(noteFrais);
                         }
@@ -56,7 +56,7 @@ namespace API_.NET.Modele
             {
                 this.connection.Open();
                 MySqlCommand cmd = this.connection.CreateCommand();
-                cmd.CommandText = $"INSERT INTO note_frais (montant_total, statut, employe_id, mois) VALUES ({noteFrais.montant_total.ToString(CultureInfo.InvariantCulture)}, '{noteFrais.statut}', {noteFrais.employe_id}, {noteFrais.mois})";
+                cmd.CommandText = $"INSERT INTO note_frais (montant_total, statut, employe_id, date) VALUES ({noteFrais.montant_total.ToString(CultureInfo.InvariantCulture)}, '{noteFrais.statut}', {noteFrais.employe_id}, '{noteFrais.date:yyyy-MM-dd HH:mm:ss}')";
                 cmd.ExecuteNonQuery();
                 this.connection.Close();
                 return "ok";
@@ -68,14 +68,14 @@ namespace API_.NET.Modele
             }
         }
 
-        public int SearchOrCreateNoteFrais(int employe_id, int mois)
+        public int SearchOrCreateNoteFrais(int employe_id, DateTime date)
         {
             int note_frais_id = -1;
             try
             {
                 this.connection.Open();
                 MySqlCommand cmd = this.connection.CreateCommand();
-                cmd.CommandText = $"SELECT * FROM note_frais WHERE employe_id={employe_id} AND mois={mois}";
+                cmd.CommandText = $"SELECT * FROM note_frais WHERE employe_id={employe_id} AND date='{date:u}'";
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -86,8 +86,8 @@ namespace API_.NET.Modele
                     else
                     {
                         DataBaseManagerNoteFrais dataBaseManagerNoteFrais = new DataBaseManagerNoteFrais();
-                        dataBaseManagerNoteFrais.AddNoteFrais(new NoteFrais(0,"En attente", employe_id, mois));
-                        note_frais_id = SearchOrCreateNoteFrais(employe_id, mois);
+                        dataBaseManagerNoteFrais.AddNoteFrais(new NoteFrais(0,"En attente", employe_id, date));
+                        note_frais_id = SearchOrCreateNoteFrais(employe_id, date);
                     }
                 }
 

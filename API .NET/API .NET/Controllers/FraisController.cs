@@ -42,7 +42,7 @@ namespace API_.NET.Controllers
         public string AddFrais([FromBody]Frais frais)
         {
             DataBaseManagerNoteFrais dataBaseManagerNoteFrais = new DataBaseManagerNoteFrais();
-            frais.note_frais_id = dataBaseManagerNoteFrais.SearchOrCreateNoteFrais(frais.employe_id, frais.date.Month);
+            frais.note_frais_id = dataBaseManagerNoteFrais.SearchOrCreateNoteFrais(frais.employe_id, new DateTime(frais.date.Year, frais.date.Month, 1));
             return dataBaseManagerFrais.AddFrais(frais);
         }
 
