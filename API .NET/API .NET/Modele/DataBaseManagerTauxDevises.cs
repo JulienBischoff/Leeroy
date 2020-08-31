@@ -15,6 +15,8 @@ namespace API_.NET.Modele
 
         public List<TauxDevise> GetTauxDevises(DateTime date)
         {
+            date = date.AddMonths(1).AddDays(-1);
+
             List<TauxDevise> tauxDeviseList = new List<TauxDevise>();
 
             this.connection.Open();
