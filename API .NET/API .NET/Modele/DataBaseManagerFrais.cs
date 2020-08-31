@@ -9,10 +9,10 @@ namespace API_.NET.Modele
 {
     public class DataBaseManagerFrais : DataBaseManager
     {
-        
+
         public DataBaseManagerFrais() : base()
         {
-            
+
         }
         public List<Frais> GetAllFrais()
         {
@@ -135,6 +135,48 @@ namespace API_.NET.Modele
             }
             return fraisList;
         }
+
+        public List<Frais> GetAllFraisOfNoteFrais(int note_frais_id)
+        {
+            List<Frais> fraisList = new List<Frais>();
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                //TODO gérer les années
+                cmd.CommandText = $"SELECT * FROM Frais WHERE note_frais_id={note_frais_id}";
+
+                // Exécution de la commande SQL
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            // Récupérez l'indexe (index) de colonne Emp_ID dans l'instruction de requête SQL.
+                            Frais frais = new Frais(reader.GetInt32("id"),
+                                                    reader.GetInt32("employe_id"),
+                                                    reader.GetString("intitule"),
+                                                    reader.GetFloat("montant"),
+                                                    reader.GetString("devise"),
+                                                    reader.GetDateTime("date"),
+                                                    reader.GetInt32("note_frais_id"),
+                                                    reader.GetString("statut"),
+                                                    reader.GetString("motif"));
+                            fraisList.Add(frais);
+                        }
+                    }
+                }
+
+                // Fermeture de la connexion
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+            }
+            return fraisList;
+        }
         public string AddFrais(Frais frais)
         {
             try
@@ -168,6 +210,58 @@ namespace API_.NET.Modele
             {
                 Console.WriteLine($"Generic Exception Handler: {e}");
                 return e.Message;
+            }
+        }
+        public string ValidateFrais(int note_frais_id)
+        {
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = $"UPDATE frais SET statut = 'Validé' WHERE note_frais_id = {note_frais_id}";
+                cmd.ExecuteNonQuery();
+                this.connection.Close();
+                return "ok";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+                return e.Message;
+            }
+        }
+        public float CalculateTotalFrais(int note_frais_id, DateTime date)
+        {
+            try
+            {
+                DataBaseManagerTauxDevises dataBaseManagerTauxDevises = new DataBaseManagerTauxDevises();
+
+
+                //Chercher les taux pour le mois
+                List<TauxDevise> tauxDevises = dataBaseManagerTauxDevises.GetTauxDevises(date);
+
+                List<Frais> allFrais = GetAllFraisOfNoteFrais(note_frais_id);
+
+                float totalFrais = 0;
+                foreach (Frais frais in allFrais)
+                {
+                    if (frais.devise == "EUR")
+                    {
+                        totalFrais += frais.montant;
+                    }
+                    else
+                    {
+                        TauxDevise tauxDevise = tauxDevises.First(x => x.nom_taux == frais.devise);
+                        totalFrais += frais.montant * tauxDevise.taux;
+                    }
+                }
+
+
+                return totalFrais;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+                return -1;
             }
         }
     }

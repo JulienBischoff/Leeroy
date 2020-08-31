@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CWntTkjBrXAvKEe1jpOI+M8ojRNNj9it/RS6rqYy0BCgXb5rEFZO/VJ6twN2pptPU2Bob4Tctwh54xAJ2PcgTg==",
+  "dgSpecHash": "7ueSDySNdA9qiCZ4fXYLGepTla0WKRY04Jz1ciQfux7WBD8FZnQvy/QI6HA0k8um52flGUOx4mpCY/KsBFSdAA==",
   "success": true,
   "projectFilePath": "C:\\Users\\JULIEN\\Documents\\Leeroy\\API .NET\\API .NET\\API .NET.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\JULIEN\\.nuget\\packages\\microsoft.win32.systemevents\\4.6.0\\microsoft.win32.systemevents.4.6.0.nupkg.sha512",
     "C:\\Users\\JULIEN\\.nuget\\packages\\mysql.data\\8.0.21\\mysql.data.8.0.21.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\JULIEN\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

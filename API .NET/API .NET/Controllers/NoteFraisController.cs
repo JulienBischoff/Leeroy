@@ -29,5 +29,12 @@ namespace API_.NET.Controllers
         {
             return dataBaseManagerNoteFrais.AddNoteFrais(noteFrais);
         }
+
+        [HttpPost]
+        [Route("validate")]
+        public string validate([FromBody]NoteFrais noteFrais)
+        {
+            return dataBaseManagerNoteFrais.ValidateNoteFrais(noteFrais.id, noteFrais.date);
+        }
     }
 }

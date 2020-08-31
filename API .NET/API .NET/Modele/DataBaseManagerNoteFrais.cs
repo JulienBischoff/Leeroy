@@ -67,6 +67,38 @@ namespace API_.NET.Modele
                 return e.Message;
             }
         }
+        
+        public string ValidateNoteFrais(int id, DateTime date)
+        {
+            try
+            {
+                DataBaseManagerFrais dataBaseManagerFrais = new DataBaseManagerFrais();
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+
+                //Changer le statut des frais associées
+                dataBaseManagerFrais.ValidateFrais(id);
+
+                //Récupérer le total des frais en EUR
+                //TODO changer la date de la note de frais à la fin du mois
+                float totalFrais = dataBaseManagerFrais.CalculateTotalFrais(id, date);
+
+
+
+                //Mettre à jour le statut et le montant de la note de frais
+                cmd.CommandText = $"UPDATE note_frais SET statut='Validé', montant_total = {totalFrais.ToString(CultureInfo.InvariantCulture)}";
+                cmd.ExecuteNonQuery();
+
+                
+                this.connection.Close();
+                return "ok";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+                return e.Message;
+            }
+        }
 
         public int SearchOrCreateNoteFrais(int employe_id, DateTime date)
         {
