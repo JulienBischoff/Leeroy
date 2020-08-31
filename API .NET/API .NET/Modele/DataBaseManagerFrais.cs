@@ -94,7 +94,7 @@ namespace API_.NET.Modele
             }
             return fraisList;
         }
-        public List<Frais> GetEmployeFraisPerMonth(int employe_id, int mois)
+        public List<Frais> GetEmployeFraisPerYearMonth(int employe_id, int annee, int mois)
         {
             List<Frais> fraisList = new List<Frais>();
             try
@@ -102,7 +102,7 @@ namespace API_.NET.Modele
                 this.connection.Open();
                 MySqlCommand cmd = this.connection.CreateCommand();
                 //TODO gérer les années
-                cmd.CommandText = $"SELECT * FROM Frais WHERE employe_id={employe_id} AND date >='{new DateTime(2020, mois, 1):u}' AND date<'{new DateTime(2020, mois, 1).AddMonths(1):u}'";
+                cmd.CommandText = $"SELECT * FROM Frais WHERE employe_id={employe_id} AND date >='{new DateTime(annee, mois, 1):u}' AND date<'{new DateTime(annee, mois, 1).AddMonths(1):u}'";
 
                 // Exécution de la commande SQL
                 using (MySqlDataReader reader = cmd.ExecuteReader())

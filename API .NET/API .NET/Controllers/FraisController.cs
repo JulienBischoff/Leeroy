@@ -31,10 +31,10 @@ namespace API_.NET.Controllers
         }
         
         [HttpGet]
-        [Route("list/{employe_id}/{mois}")]
-        public List<Frais> FraisEmployePerMonthList(int employe_id, int mois)
+        [Route("list/{employe_id}/{annee}/{mois}")]
+        public List<Frais> FraisEmployePerMonthList(int employe_id, int annee ,int mois)
         {
-            return dataBaseManagerFrais.GetEmployeFraisPerMonth(employe_id, mois);
+            return dataBaseManagerFrais.GetEmployeFraisPerYearMonth(employe_id, annee, mois);
         }
         
         [HttpPost]
