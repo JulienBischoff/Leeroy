@@ -229,6 +229,27 @@ namespace API_.NET.Modele
                 return e.Message;
             }
         }
+
+        public string RefuseFrais(List<Frais> refusedFrais)
+        {
+            try
+            {
+                this.connection.Open();
+                MySqlCommand cmd = this.connection.CreateCommand();
+                foreach (Frais frais in refusedFrais)
+                {
+                    cmd.CommandText = $"UPDATE frais SET statut = 'Refusé', motif = '{frais.motif}' WHERE id = {frais.id}";
+                    cmd.ExecuteNonQuery();
+                }
+                this.connection.Close();
+                return "ok";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Generic Exception Handler: {e}");
+                return e.Message;
+            }
+        }
         public float CalculateTotalFrais(int note_frais_id, DateTime date)
         {
             try

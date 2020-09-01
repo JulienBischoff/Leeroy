@@ -36,5 +36,12 @@ namespace API_.NET.Controllers
         {
             return dataBaseManagerNoteFrais.ValidateNoteFrais(noteFrais.id, noteFrais.date);
         }
+        
+        [HttpPost]
+        [Route("refuse/{note_frais_id}/{annee}/{mois}")]
+        public string refuse(int note_frais_id, int annee, int mois, [FromBody]List<Frais> refusedFrais)
+        {
+            return dataBaseManagerNoteFrais.RefuseNoteFrais(note_frais_id, new DateTime(annee, mois, 1), refusedFrais);
+        }
     }
 }
