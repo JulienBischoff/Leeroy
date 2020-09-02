@@ -5,6 +5,9 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import java.security.Key;
 import java.sql.*;
 
 public class DataBaseManager {
@@ -44,6 +47,7 @@ public class DataBaseManager {
 
             //Lecture du premier resultat
             if(result.next() == true){
+
                 //Création du JWT
                 JwtBuilder builder = Jwts.builder()
                         .setIssuedAt(new Date(System.currentTimeMillis())) //Date d'emission
@@ -51,7 +55,7 @@ public class DataBaseManager {
                         .setSubject("Authentification")
                         .claim("email", result.getString("email"))
                         .claim("role", result.getString("role"))
-                        .signWith(SignatureAlgorithm.HS256, SECRET_KEY); //Signature
+                        .signWith(SignatureAlgorithm.HS256, SECRET_KEY.getBytes("UTF-8")); //Signature
                 result.close();
                 state.close();
                 userFound = builder.compact();
