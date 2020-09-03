@@ -16,11 +16,20 @@
         </q-toolbar-title>
         <div>
           <q-btn
+            v-if="token==null"
             dense
             color="red"
             icon="perm_identity"
             to="/Connexion"
           >Connexion
+          </q-btn>
+          <q-btn
+            v-if="token!=null"
+            dense
+            color="red"
+            icon="perm_identity"
+            @click="deconnexion ()">
+            Deconnexion
           </q-btn>
         </div>
       </q-toolbar>
@@ -84,6 +93,16 @@ export default {
     return {
       leftDrawerOpen: false,
       essentialLinks: linksData
+    }
+  },
+  computed: {
+    token () {
+      return this.$store.state.token.token
+    }
+  },
+  methods: {
+    deconnexion () {
+      this.$store.commit('token/updateToken', null)
     }
   }
 }

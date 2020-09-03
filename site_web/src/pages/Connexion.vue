@@ -21,26 +21,34 @@
       <q-btn label="Submit" type="submit" color="primary"/>
       </div>
     </q-form>
-    {{data}}
   </div>
 </template>
 
 <script>
+import jwt from 'jsonwebtoken'
+
 export default {
   name: 'Connexion',
   data () {
     return {
       email: null,
       password: null,
-      data: null
+      SECRET_KEY: 'S2EfMEEFUTyW4Mv1hXTOmwYnz3zSrj9P0SrdtqwUSpaX9ZZU8FWqqnrLbT851nQ'
     }
   },
   methods: {
     onSubmit () {
       this.$axios.get('http://localhost:8080/Authentification?email=' + this.email + '&password=' + this.password)
         .then((response) => {
-          this.data = response.data
-        })
+          this.$store.commit('token/updateToken', jwt.verify(response.data, this.SECRET_KEY))
+        }).then(() => this.redirect())
+    },
+    redirect () {
+      if (this.$store.state.token.token) {
+        this.$router.push('/')
+      } else {
+        this.$q.notify('Erreur de connexion')
+      }
     }
   }
 }
