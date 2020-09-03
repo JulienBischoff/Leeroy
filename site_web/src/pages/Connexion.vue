@@ -21,6 +21,7 @@
       <q-btn label="Submit" type="submit" color="primary"/>
       </div>
     </q-form>
+    {{data}}
   </div>
 </template>
 
@@ -30,11 +31,16 @@ export default {
   data () {
     return {
       email: null,
-      password: null
+      password: null,
+      data: null
     }
   },
   methods: {
     onSubmit () {
+      this.$axios.get('http://localhost:8080/Authentification?email=' + this.email + '&password=' + this.password)
+        .then((response) => {
+          this.data = response.data
+        })
     }
   }
 }
