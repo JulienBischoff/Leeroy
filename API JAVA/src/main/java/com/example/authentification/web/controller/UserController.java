@@ -2,6 +2,7 @@ package com.example.authentification.web.controller;
 import com.example.authentification.DataBaseManager;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class UserController {
     DataBaseManager dataBaseManager = new DataBaseManager();
