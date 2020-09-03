@@ -55,6 +55,7 @@ public class DataBaseManager {
                         .setSubject("Authentification")
                         .claim("email", result.getString("email"))
                         .claim("role", result.getString("role"))
+                        .claim("id", result.getInt("id"))
                         .signWith(SignatureAlgorithm.HS256, SECRET_KEY.getBytes("UTF-8")); //Signature
                 result.close();
                 state.close();
