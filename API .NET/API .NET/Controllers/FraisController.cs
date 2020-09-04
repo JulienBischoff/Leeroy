@@ -1,4 +1,5 @@
 ﻿using API_.NET.Modele;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace API_.NET.Controllers
                 return null;
             }
         }
-        
+
         [HttpGet]
         [Route("list/{employe_id}/{annee}/{mois}")]
         public List<Frais> FraisEmployePerMonthList(int employe_id, int annee ,int mois)

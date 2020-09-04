@@ -61,3 +61,6 @@ C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Microsoft.Id
 C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\System.Web.Http.dll
+C:\Users\JULIEN\Documents\Leeroy\API .NET\API .NET\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

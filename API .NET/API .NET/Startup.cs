@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 
 namespace API_.NET
 {
@@ -28,6 +29,7 @@ namespace API_.NET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
 
             services.AddControllers();
 
@@ -44,6 +46,11 @@ namespace API_.NET
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization));
 
             app.UseAuthorization();
 
