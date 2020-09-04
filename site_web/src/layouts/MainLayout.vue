@@ -29,7 +29,7 @@
             color="red"
             icon="perm_identity"
             @click="deconnexion ()">
-            Deconnexion
+            ( {{token.email}} ) Deconnexion
           </q-btn>
         </div>
       </q-toolbar>
