@@ -38,7 +38,6 @@
       >
       </q-table>
     </div>
-    {{token}}
     <div v-if="popup">
       <q-dialog v-if="selected.length > 0" v-model="popup" style="width: 800px">
         <q-card style="width: 800px">
