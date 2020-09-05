@@ -94,8 +94,6 @@ public class DataBaseManager {
             ResultSet result = state.executeQuery(request);
             if(result.next() == false){
 
-
-                //String salted_password = hach(password+result.salt)
                 SecureRandom random = new SecureRandom();
                 String salt = UUID.randomUUID().toString().replaceAll("-", "");
                 String hashed_password = hashPassword(salt.getBytes(), password);
