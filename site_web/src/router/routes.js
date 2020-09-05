@@ -15,6 +15,13 @@ const routes = [
     ]
   },
   {
+    path: '/Registration',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Registration.vue') }
+    ]
+  },
+  {
     path: '/ViewFrais',
     component: () => import('layouts/MainLayout.vue'),
     children: [

@@ -1,5 +1,6 @@
 <template>
   <div class="q-pa-md">
+    <h1>Connexion</h1>
     <q-form
     @submit="onSubmit"
     class="q-gutter-md"

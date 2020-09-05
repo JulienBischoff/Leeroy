@@ -18,6 +18,14 @@
           <q-btn
             v-if="token==null"
             dense
+            color="green"
+            icon="perm_identity"
+            to="/Registration"
+          >Registration
+          </q-btn>
+          <q-btn
+            v-if="token==null"
+            dense
             color="red"
             icon="perm_identity"
             to="/Connexion"
