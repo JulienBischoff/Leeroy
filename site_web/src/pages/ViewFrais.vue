@@ -23,6 +23,7 @@
           >
           </q-select>
           <q-btn label="Get Frais" type="submit" color="primary"/>
+          <q-btn label="Add Frais" color="primary" @click="newFraisBool = true"/>
         </q-form>
 
       </div>
@@ -37,10 +38,9 @@
       >
       </q-table>
     </div>
-    {{frais}}
-    {{selected}}
+    {{token}}
     <div v-if="popup">
-      <q-dialog v-model="popup" style="width: 800px">
+      <q-dialog v-if="selected.length > 0" v-model="popup" style="width: 800px">
         <q-card style="width: 800px">
           <q-card-section>
             <div class="text-h6">Modify</div>
@@ -74,17 +74,55 @@
               <q-input
                 v-if="token.role == 3"
                 v-model="selected[0]['statut']"
-                label="Enter your email"
+                label="Statut"
                 :rules="[ val => val && val.length > 0 || 'Please type something']">
               </q-input>
               <q-input
                 v-model="selected[0]['motif']"
+                label="Motif"
                 v-if="token.role == 3"
-                label="Enter your email"
                 :rules="[ val => val && val.length > 0 || 'Please type something']">
               </q-input>
               <q-btn v-if="selected[0]['statut'].length == 0" flat label="Update" type="submit" color="primary" />
               <q-btn flat label="Close" color="primary" @click="selected = []" />
+
+            </q-form>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+      <q-dialog v-if="newFraisBool" v-model="popup" style="width: 800px">
+        <q-card style="width: 800px">
+          <q-card-section>
+            <div class="text-h6">Add</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <q-form
+              class="q-gutter-md"
+              @submit="addNewFrais()"
+            >
+              <q-input
+                v-model="newFrais['intitule']"
+                label="Intitulé"
+                :rules="[ val => val && val.length > 0 || 'Please type something']">
+              </q-input>
+              <q-input
+                v-model="newFrais['montant']"
+                label="Montant">
+              </q-input>
+              <q-input
+                v-model="newFrais['devise']"
+                label="Devise"
+                :rules="[ val => val && val.length > 0 || 'Please type something']">
+              </q-input>
+              <q-input
+                v-model="newFrais['date']"
+                label="Date"
+                type = "date"
+                :rules="[ val => val && val.length > 0 || 'Please type something']">
+              </q-input>
+              <q-btn flat label="Add" type="submit" color="primary" />
+              <q-btn flat label="Close" color="primary" @click="newFraisBool = false " />
 
             </q-form>
           </q-card-section>
@@ -108,6 +146,8 @@ export default {
       mois_options: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
       frais: [],
       selected: [],
+      newFrais: { intitule: '', montant: '', devise: '', date: '', statut: '', motif: '' },
+      newFraisBool: false,
       SECRET_KEY: 'S2EfMEEFUTyW4Mv1hXTOmwYnz3zSrj9P0SrdtqwUSpaX9ZZU8FWqqnrLbT851nQ'
     }
   },
@@ -116,7 +156,7 @@ export default {
       return this.$store.state.token.token
     },
     popup () {
-      if (this.selected.length > 0) {
+      if (this.selected.length > 0 || this.newFraisBool) {
         return true
       } else {
         return false
@@ -153,6 +193,27 @@ export default {
           '", "note_frais_id": ' + this.selected[0].note_frais_id +
           '}'
         this.selected = []
+        await this.$axios.post(url, body, { headers: { 'content-type': 'text/json' } })
+          .then((response) => this.$q.notify('Statuts update: ' + response.status))
+      } else {
+        this.$q.notify('Connectez vous')
+        this.$router.push('/Connexion')
+      }
+    },
+    async addNewFrais () {
+      if (this.token) {
+        this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
+        var url = 'https://localhost:44301/api/frais/create'
+        var body = '{"id": 0, "employe_id": ' + this.token.id +
+          ', "intitule": "' + this.newFrais.intitule +
+          '", "montant": ' + this.newFrais.montant +
+          ', "devise": "' + this.newFrais.devise +
+          '", "date": "' + this.newFrais.date +
+          '", "statut": "' + this.newFrais.statut +
+          '", "motif": "' + this.newFrais.motif +
+          '", "note_frais_id": 0}'
+        console.log(body)
+        this.newFraisBool = false
         await this.$axios.post(url, body, { headers: { 'content-type': 'text/json' } })
           .then((response) => this.$q.notify('Statuts update: ' + response.status))
       } else {
