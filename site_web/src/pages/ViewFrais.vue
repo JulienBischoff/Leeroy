@@ -83,7 +83,7 @@
                 v-if="token.role == 3"
                 :rules="[ val => val && val.length > 0 || 'Please type something']">
               </q-input>
-              <q-btn v-if="selected[0]['statut'].length == 0" flat label="Update" type="submit" color="primary" />
+              <q-btn v-if="selected[0]['statut'] == 'En attente' || token.role == '3'" flat label="Update" type="submit" color="primary" />
               <q-btn flat label="Close" color="primary" @click="selected = []" />
 
             </q-form>
