@@ -60,6 +60,20 @@ namespace API_.NET.Controllers
                 return null;
             }
         }
+
+        [HttpGet]
+        [Route("note-frais/{note_frais_id}")]
+        public List<Frais> GetFraisPerNoteFraisID( int note_frais_id)
+        {
+            if (CheckToken())
+            {
+                return dataBaseManagerFrais.GetFraisPerNoteFraisID(note_frais_id);
+            }
+            else
+            {
+                return null;
+            }
+        }
         
         [HttpPost]
         [Route("create")]
