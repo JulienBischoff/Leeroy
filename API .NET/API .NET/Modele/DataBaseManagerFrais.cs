@@ -136,7 +136,7 @@ namespace API_.NET.Modele
             return fraisList;
         }
         
-        public List<Frais> GetEmployeFraisPerNoteFraisID(int note_frais_id)
+        public List<Frais> GetFraisPerNoteFraisID(int note_frais_id)
         {
             List<Frais> fraisList = new List<Frais>();
             try
