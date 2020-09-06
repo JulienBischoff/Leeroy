@@ -86,7 +86,7 @@ namespace API_.NET.Modele
 
 
                 //Mettre à jour le statut et le montant de la note de frais
-                cmd.CommandText = $"UPDATE note_frais SET statut='Validé', montant_total = {totalFrais.ToString(CultureInfo.InvariantCulture)}";
+                cmd.CommandText = $"UPDATE note_frais SET statut='Validé', montant_total = {totalFrais.ToString(CultureInfo.InvariantCulture)} WHERE id={id}";
                 cmd.ExecuteNonQuery();
 
                 
