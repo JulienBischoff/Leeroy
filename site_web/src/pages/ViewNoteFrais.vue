@@ -21,6 +21,9 @@
           :selected.sync="selectedFrais"
         >
         </q-table>
+        <q-btn label="Validate this Note Frais" color="primary" @click="validateFrais() "/>
+        <br><br>
+        <q-btn label="Update" color="primary" @click="refuseFrais()"/>
         <q-btn label="Reset" color="primary" @click="getFrais()"/>
       </div>
       <div color="white">
@@ -131,11 +134,28 @@ export default {
         if (this.selectedNoteFrais.length > 0) {
           this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
           var url = 'https://localhost:44301/api/frais/note-frais/' + this.selectedNoteFrais[0].id
-          console.log(url)
           await this.$axios.get(url)
             .then((response) => {
               this.frais = response.data
             })
+        }
+      } else {
+        this.$q.notify('Connectez vous')
+        this.$router.push('/Connexion')
+      }
+    },
+    async validateFrais () {
+      if (this.token) {
+        if (this.selectedNoteFrais.length > 0) {
+          this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
+          var url = 'https://localhost:44301/api/noteFrais/validate/'
+          var body = '{"id": ' + this.selectedNoteFrais[0].id +
+            ', "montant_total": ' + this.selectedNoteFrais[0].montant_total +
+            ', "statut": "' + this.selectedNoteFrais[0].statut +
+            '", "date": "' + this.selectedNoteFrais[0].date +
+            '"}'
+          await this.$axios.post(url, body, { headers: { 'content-type': 'text/json' } })
+            .then((response) => this.$q.notify('Statuts update: ' + response.status))
         }
       } else {
         this.$q.notify('Connectez vous')
