@@ -37,9 +37,14 @@ export default {
       SECRET_KEY: 'S2EfMEEFUTyW4Mv1hXTOmwYnz3zSrj9P0SrdtqwUSpaX9ZZU8FWqqnrLbT851nQ'
     }
   },
+  computed: {
+    urlJava () {
+      return this.$store.state.urls.urlJava
+    }
+  },
   methods: {
     onSubmit () {
-      this.$axios.get('http://localhost:8080/Authentification?email=' + this.email + '&password=' + this.password)
+      this.$axios.get(this.urlJava + 'Authentification?email=' + this.email + '&password=' + this.password)
         .then((response) => {
           this.$store.commit('token/updateToken', jwt.verify(response.data.token, this.SECRET_KEY))
         }).then(() => this.redirect())

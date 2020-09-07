@@ -154,6 +154,9 @@ export default {
     token () {
       return this.$store.state.token.token
     },
+    urlCsharp () {
+      return this.$store.state.urls.urlCSharp
+    },
     popup () {
       if (this.selected.length > 0 || this.newFraisBool) {
         return true
@@ -167,7 +170,7 @@ export default {
       this.frais = []
       if (this.token) {
         this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
-        var url = 'https://localhost:44301/api/frais/list/' + this.token.id + '/' + this.annee + '/' + this.mois
+        var url = this.urlCsharp + 'frais/list/' + this.token.id + '/' + this.annee + '/' + this.mois
         this.$axios.get(url)
           .then((response) => {
             this.frais = response.data
@@ -180,7 +183,7 @@ export default {
     async updateSelected () {
       if (this.token) {
         this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
-        var url = 'https://localhost:44301/api/frais/update'
+        var url = this.urlCsharp + 'frais/update'
         var body = '{"id": ' + this.selected[0].id +
           ', "employe_id": ' + this.selected[0].employe_id +
           ', "intitule": "' + this.selected[0].intitule +
@@ -202,7 +205,7 @@ export default {
     async addNewFrais () {
       if (this.token) {
         this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
-        var url = 'https://localhost:44301/api/frais/create'
+        var url = this.urlCsharp + 'frais/create'
         var body = '{"id": 0, "employe_id": ' + this.token.id +
           ', "intitule": "' + this.newFrais.intitule +
           '", "montant": ' + this.newFrais.montant +

@@ -36,9 +36,14 @@ export default {
       SECRET_KEY: 'S2EfMEEFUTyW4Mv1hXTOmwYnz3zSrj9P0SrdtqwUSpaX9ZZU8FWqqnrLbT851nQ'
     }
   },
+  computed: {
+    urlJava () {
+      return this.$store.state.urls.urlJava
+    }
+  },
   methods: {
     onSubmit () {
-      this.$axios.get('http://localhost:8080/AddUser?email=' + this.email + '&password=' + this.password)
+      this.$axios.get(this.urlJava + 'AddUser?email=' + this.email + '&password=' + this.password)
         .then((response) => {
           if (response.data === 'Adresse mail déjà utilisée') {
             this.$q.notify('Email déjà utilisé')

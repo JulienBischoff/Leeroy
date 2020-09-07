@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import token from './module-example/store-user'
+import urls from './module-example/store-urls'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      token
+      token,
+      urls
     },
 
     // enable strict mode (adds overhead!)

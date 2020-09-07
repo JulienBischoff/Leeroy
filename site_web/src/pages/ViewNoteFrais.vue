@@ -102,6 +102,9 @@ export default {
     token () {
       return this.$store.state.token.token
     },
+    urlCsharp () {
+      return this.$store.state.urls.urlCSharp
+    },
     popup () {
       if (this.selectedFrais.length > 0) {
         return true
@@ -119,7 +122,7 @@ export default {
       this.noteFrais = []
       if (this.token) {
         this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
-        var url = 'https://localhost:44301/api/noteFrais/list/'
+        var url = this.urlCsharp + 'noteFrais/list/'
         await this.$axios.get(url)
           .then((response) => {
             this.noteFrais = response.data
@@ -134,7 +137,7 @@ export default {
       if (this.token) {
         if (this.selectedNoteFrais.length > 0) {
           this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
-          var url = 'https://localhost:44301/api/frais/note-frais/' + this.selectedNoteFrais[0].id
+          var url = this.urlCsharp + 'frais/note-frais/' + this.selectedNoteFrais[0].id
           await this.$axios.get(url)
             .then((response) => {
               this.frais = response.data
@@ -149,7 +152,7 @@ export default {
       if (this.token) {
         if (this.selectedNoteFrais.length > 0) {
           this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
-          var url = 'https://localhost:44301/api/noteFrais/validate/'
+          var url = this.urlCsharp + 'noteFrais/validate/'
           var body = '{"id": ' + this.selectedNoteFrais[0].id +
             ', "montant_total": ' + this.selectedNoteFrais[0].montant_total +
             ', "statut": "' + this.selectedNoteFrais[0].statut +
@@ -171,7 +174,7 @@ export default {
         var mois = this.selectedNoteFrais[0].date.slice(5, 7)
         // Récupération des frais qui ont un statut
         var updatedFrais = this.frais.filter(frais => frais.statut.length > 0)
-        var url = 'https://localhost:44301/api/noteFrais/refuse/' + this.selectedNoteFrais[0].id + '/' + annee + '/' + mois
+        var url = this.urlCsharp + 'noteFrais/refuse/' + this.selectedNoteFrais[0].id + '/' + annee + '/' + mois
         var body = updatedFrais
         await this.$axios.post(url, body, { headers: { 'content-type': 'text/json' } })
           .then((response) => this.$q.notify('Statuts update: ' + response.status))
