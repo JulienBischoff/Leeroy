@@ -23,8 +23,9 @@
         </q-table>
         <q-btn label="Validate this Note Frais" color="primary" @click="validateFrais() "/>
         <br><br>
-        <q-btn label="Update" color="primary" @click="refuseFrais()"/>
-        <q-btn label="Reset" color="primary" @click="getFrais()"/>
+        <q-btn label="Update / Refuse this Note Frais" color="primary" @click="refuseFrais()"/>
+        <br><br>
+        <q-btn label="Reset modifications" color="primary" @click="getFrais()"/>
       </div>
       <div color="white">
         {{onChangeSelectedFrais}}
@@ -157,6 +158,23 @@ export default {
           await this.$axios.post(url, body, { headers: { 'content-type': 'text/json' } })
             .then((response) => this.$q.notify('Statuts update: ' + response.status))
         }
+      } else {
+        this.$q.notify('Connectez vous')
+        this.$router.push('/Connexion')
+      }
+    },
+    async refuseFrais () {
+      if (this.token) {
+        this.$axios.defaults.headers.common.Authorization = jwt.sign(this.token, this.SECRET_KEY)
+        // Récupération de l'annee et du mois pour la requete api
+        var annee = this.selectedNoteFrais[0].date.slice(0, 4)
+        var mois = this.selectedNoteFrais[0].date.slice(5, 7)
+        // Récupération des frais qui ont un statut
+        var updatedFrais = this.frais.filter(frais => frais.statut.length > 0)
+        var url = 'https://localhost:44301/api/noteFrais/refuse/' + this.selectedNoteFrais[0].id + '/' + annee + '/' + mois
+        var body = updatedFrais
+        await this.$axios.post(url, body, { headers: { 'content-type': 'text/json' } })
+          .then((response) => this.$q.notify('Statuts update: ' + response.status))
       } else {
         this.$q.notify('Connectez vous')
         this.$router.push('/Connexion')

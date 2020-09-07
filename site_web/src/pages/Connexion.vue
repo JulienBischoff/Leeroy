@@ -41,7 +41,6 @@ export default {
     onSubmit () {
       this.$axios.get('http://localhost:8080/Authentification?email=' + this.email + '&password=' + this.password)
         .then((response) => {
-          console.log(response)
           this.$store.commit('token/updateToken', jwt.verify(response.data.token, this.SECRET_KEY))
         }).then(() => this.redirect())
     },
