@@ -59,6 +59,7 @@ namespace API_.NET.Controllers
         }
 
         [HttpPost]
+        [Route("refuse/{note_frais_id}/{annee}/{mois}")]
         public string refuse(int note_frais_id, int annee, int mois, [FromBody]List<Frais> refusedFrais)
         {
             if (CheckToken())
